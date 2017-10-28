@@ -12,17 +12,18 @@ import argparse, ddlog, os, paramiko, sys
 from threading import Thread
 from queue import Queue
 
+
 def main(hostlist):
     global username, password, commands, output
 
     path = os.getcwd() + '//logs/'
-    file = hostlist + '.log'
+    file = hostlist +' '+ ddlog.timestamp()+'.log'
     if not os.path.exists(path):
         os.makedirs(path)
     if output is True:
-        ddlog.setup(path+file)
+        ddlog.setup(path+file, 'info')
     else:
-        ddlog.console()
+        ddlog.console('info')
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -45,7 +46,7 @@ def main(hostlist):
         stdin, stdout, stderr = ssh.exec_command(command, get_pty=True)
         lines = iter(stdout.readline, "")
         for line in lines:
-            ddlog.event('[+] '+line,'info')
+            ddlog.event('[OUTPUT] '+line,'info')
         stdin.close()
 
 try:
