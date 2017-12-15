@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """Dexter's Device Login Utility, Version 1.0, by Dexter Park.
-   Learn more: https://github.com/ddexterpark/neteng
+   Learn more: https://github.com/ddexterpark/devops
 
    Paramiko-based ssh utility that connects to a list of devices (in parallel) and executes commands.
 
@@ -16,6 +16,7 @@ from queue import Queue
 def main(hostlist):
     global username, password, commands, output
 
+    # Option for logging.
     path = os.getcwd() + '//logs/'
     file = hostlist +' '+ ddlog.timestamp()+'.log'
     if not os.path.exists(path):

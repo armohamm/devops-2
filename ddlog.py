@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """Dexter's Device Logger Utility, Version 1.0, by Dexter Park.
-   Learn more: https://github.com/ddexterpark/neteng"""
+   Learn more: https://github.com/ddexterpark/devops"""
 
-import logging, sys, time, datetime
+import logging, sys, time, datetime, pyshark
 
-# Display time in Example: 2017-10-27 06:00:00
+# Display timestamp.
 def timestamp():
     format_time = "on {:%a, %d %b %Y at %I.%M%p}, PST".format(datetime.datetime.now())
     return format_time
@@ -16,7 +16,7 @@ fileLogger = logging.getLogger()
 fileLogger.setLevel(logging.DEBUG)
 
 # Dictionary for filtering log messages by severity.
-log_messages = {'debug': logging.DEBUG,
+logMessages = {'debug': logging.DEBUG,
                 'info': logging.INFO,
                 'warning': logging.WARNING,
                 'error': logging.ERROR,
@@ -33,8 +33,8 @@ def console(setLevel):
     consoleHandler.setFormatter(consoleFormatter)
 
     # Switch for filtering console log messages.
-    filter_console_handler = log_messages.get(setLevel, logging.DEBUG)
-    consoleHandler.setLevel(filter_console_handler)
+    filterConsoleHandler = logMessages.get(setLevel, logging.DEBUG)
+    consoleHandler.setLevel(filterConsoleHandler)
 
     #consoleHandler.setLevel(setLevel)
     fileLogger.addHandler(consoleHandler)
@@ -50,9 +50,9 @@ def setup(logFile, setLevel):
     fileHandler.setFormatter(logFormatter)
 
     # Switch for filtering file handler messages.
-    filter_file_handler = log_messages.get(setLevel, logging.DEBUG)
+    filterFileHandler = logMessages.get(setLevel, logging.DEBUG)
 
-    fileHandler.setLevel(filter_file_handler)
+    fileHandler.setLevel(filterFileHandler)
     fileLogger.addHandler(fileHandler)
 
     # Stream Handler for console (stdout, stderr)
@@ -61,6 +61,13 @@ def setup(logFile, setLevel):
 # Call event when you want to create log messages regardless of which handler you prefer.
 # Example:  ddlog.event('[+] test message', 'info')
 def event( string, level='debug'):
-    switch_log_levels = {'debug': fileLogger.debug,'info': fileLogger.info,'warning': fileLogger.warning,
+    switchLogLevels = {'debug': fileLogger.debug,'info': fileLogger.info,'warning': fileLogger.warning,
                          'error': fileLogger.error, 'critical': fileLogger.critical}
-    switch_log_levels[level](string)
+    switchLogLevels[level](string)
+
+# (PreReq = setup or console), call pcap when you want to take a packet capture and save it as a .pcap
+def pcap(interface):
+        capture = pyshark.LiveCapture(interface=interface)
+        capture.sniff(timeout=50)
+        for packet in capture.sniff_continuously(packet_count=5):
+            event('Just arrived:' + packet, 'info')
