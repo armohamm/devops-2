@@ -1,6 +1,8 @@
 ### Command Line Network Automation Tools.
 A repo for network automation of design, deployment, and operations tasks.
 
+![screenshot](devops.png)
+
 # Suggested Platform and Software  
 
 MacBook:
