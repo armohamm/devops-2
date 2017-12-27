@@ -1,6 +1,6 @@
 ### DevOps Tools for NetEng Automation.
 
-![screenshot](devops.png)
+![screenshot](devops.jpg)
 
 # Suggested Platform and Software  
 
