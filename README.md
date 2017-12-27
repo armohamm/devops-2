@@ -1,5 +1,4 @@
-### Command Line Network Automation Tools.
-A repo for network automation of design, deployment, and operations tasks.
+### DevOps for NetEng Automation.
 
 ![screenshot](devops.png)
 
