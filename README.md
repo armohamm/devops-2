@@ -1,6 +1,6 @@
-# Tools for NetEng Automation.
+# Tools for Network Automation.
 
-![screenshot](devops.jpg)
+[![screenshot](devops.jpg)](https://www.youtube.com/watch?v=3ht-ZyJOV2k)
 
 # Suggested Platform and Software  
 
