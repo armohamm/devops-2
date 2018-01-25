@@ -1,6 +1,6 @@
 # Tools for Network Automation.
 
-[![screenshot](images/devops.jpg)](https://www.youtube.com/watch?v=3ht-ZyJOV2k)
+[![screenshot](devops.jpg)](https://www.youtube.com/watch?v=3ht-ZyJOV2k)
 
 
 # Command Line Tools  
