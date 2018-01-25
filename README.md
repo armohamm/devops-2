@@ -1,22 +1,7 @@
 # Tools for Network Automation.
 
-[![screenshot](devops.jpg)](https://www.youtube.com/watch?v=3ht-ZyJOV2k)
+[![screenshot](images/devops.jpg)](https://www.youtube.com/watch?v=3ht-ZyJOV2k)
 
-# Suggested Platform and Software  
-
-MacBook:
-https://www.apple.com/macbook-pro/
-
-PyCharm:
-https://www.jetbrains.com/pycharm/download/
-
-Docker:
-https://docs.docker.com/engine/getstarted/
-
-### Clone this repo
-
-Use Git or your favorite IDE to clone this project. In PyCharm, use the GitHub option on the new project screen.          
- 
 
 # Command Line Tools  
 ddlogin - A command line ssh tool that can execute commands against remote hosts (in parallel), and provides logging options for output.   
