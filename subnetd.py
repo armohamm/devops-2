@@ -2,7 +2,7 @@ from netaddr import IPAddress, IPNetwork
 from subprocess import run
 import sys
 
-run("pip install netaddr", shell=True, check=True)
+run("pip3 install netaddr", shell=True, check=True)
 
 # https://media.readthedocs.org/pdf/netaddr/latest/netaddr.pdf
 # netaddr has so much potential for future scripts such as re-iping, and IPAM. Must investigate further.
