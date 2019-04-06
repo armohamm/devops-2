@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Dexter's Device Logger Utility, Version 1.0, by Dexter Park.
-   Learn more: https://github.com/ddexterpark/devops"""
-
-import logging, sys, time, datetime, pyshark
+import logging, sys, time, datetime
 
 # Display timestamp.
 def timestamp():
@@ -40,7 +37,7 @@ def console(setLevel):
     fileLogger.addHandler(consoleHandler)
 
 # Call setup handler when you want to see log messages in your terminal window AND save the output to a file.
-def setup(logFile, setLevel):
+def setup(logFile: object, setLevel: object) -> object:
     global fileLogger
     logFormatStr = "[%(asctime)s %(threadName)s, %(levelname)s] %(message)s"
 
@@ -60,14 +57,7 @@ def setup(logFile, setLevel):
 
 # Call event when you want to create log messages regardless of which handler you prefer.
 # Example:  ddlog.event('[+] test message', 'info')
-def event( string, level='debug'):
+def event(string, level='debug'):
     switchLogLevels = {'debug': fileLogger.debug,'info': fileLogger.info,'warning': fileLogger.warning,
                          'error': fileLogger.error, 'critical': fileLogger.critical}
     switchLogLevels[level](string)
-
-# (PreReq = setup or console), call pcap when you want to take a packet capture and save it as a .pcap
-def pcap(interface):
-        capture = pyshark.LiveCapture(interface=interface)
-        capture.sniff(timeout=50)
-        for packet in capture.sniff_continuously(packet_count=5):
-            event('Just arrived:' + packet, 'info')
